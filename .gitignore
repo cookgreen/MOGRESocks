@@ -1,4 +1,5 @@
 .vs/*
-*/bin/*
-*/obj/*
-MogreSocks.dll
+Debug/*
+Release/*
+*/Debug/*
+*/Release/*

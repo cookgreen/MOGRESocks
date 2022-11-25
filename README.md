@@ -1,2 +1,2 @@
 # MOGRESocks
-Network library for MOGRE (Managed Ogre3d)
+C++/CLI Wrapper for OgreSocks use for MOGRE

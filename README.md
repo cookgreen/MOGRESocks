@@ -1,10 +1,10 @@
 # MogreSocks  
 C++/CLI Wrapper for OgreSocks use for MOGRE
 
-## Enviroment
+## CLR Version  
 .NET Framework 3.5  
 
-## Tool
+## Environment 
 Visual Studio 2008  
 Windows 7 VM (Virtual Box 6.1.3)
 

@@ -7,9 +7,9 @@ using namespace System::Runtime::InteropServices;
 using namespace System::Security::Permissions;
 
 [assembly:AssemblyTitleAttribute("MogreSocks")];
-[assembly:AssemblyDescriptionAttribute("")];
+[assembly:AssemblyDescriptionAttribute("C++/CLI Wrapper for OgreSocks use for MOGRE")];
 [assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("Microsoft")];
+[assembly:AssemblyCompanyAttribute("Yin Xiaoguang")];
 [assembly:AssemblyProductAttribute("MogreSocks")];
 [assembly:AssemblyCopyrightAttribute("GNU GPLv3")];
 [assembly:AssemblyTrademarkAttribute("")];

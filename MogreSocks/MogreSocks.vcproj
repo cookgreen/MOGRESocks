@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(OGRESOCKS)/OgreSocks&quot;;C:\Repos\EngineDeps\Mogre\Main\OgreSrc\ogre\lib\include;$(OGRE_HOME)\include"
+				AdditionalIncludeDirectories="&quot;$(OGRESOCKS)/OgreSocks&quot;;$(OGRE_HOME)/include"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
@@ -60,9 +60,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib OgreSocks_d.lib $(NOINHERIT)"
+				AdditionalDependencies="OgreMain_d.lib OgreSocks_d.lib Ws2_32.lib $(NOINHERIT)"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(OGRESOCKS)/Debug&quot;;$(OGRE_HOME)\lib\Debug"
+				AdditionalLibraryDirectories="&quot;$(OGRESOCKS)/Debug&quot;;$(OGRE_HOME)/lib/Debug"
 				GenerateDebugInformation="true"
 				AssemblyDebug="1"
 				TargetMachine="1"
@@ -115,9 +115,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(OGRESOCKS)/OgreSocks&quot;;$(OGRE_HOME)/include"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				RuntimeLibrary="2"
-				UsePrecompiledHeader="2"
+				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -132,9 +133,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(NoInherit)"
+				AdditionalDependencies="OgreMain.lib OgreSocks.lib Ws2_32.lib $(NOINHERIT)"
 				LinkIncremental="1"
-				ModuleDefinitionFile="MogreSocksBase.def"
+				AdditionalLibraryDirectories="&quot;$(OGRESOCKS)/Release&quot;;$(OGRE_HOME)/lib/Release"
+				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>

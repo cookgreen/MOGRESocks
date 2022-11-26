@@ -55,12 +55,7 @@ namespace MogreSocks
 
 		virtual void Send(array<Byte>^  data, String^ addr, unsigned long port)
 		{
-			std::list<char> cdata;
-			for (int i=0;i<data->GetUpperBound(0);i++)
-			{
-				char c = *(Byte^)data->GetValue(i);
-				cdata.push_back(c);
-			}
+			std::list<char> cdata = Util::ConvertByteArrayToListChar(data);
 
 			Ogre::String saddr;
 			Util::ConvertManagedStrToOgreStr(saddr, addr);

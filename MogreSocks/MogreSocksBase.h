@@ -13,7 +13,7 @@ namespace MogreSocks
 	public:
 		~MogreSocksBase()
 		{
-
+			
 		}
 	protected:
 

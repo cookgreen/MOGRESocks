@@ -1,4 +1,4 @@
-# MOGRESocks
+# MogreSocks  
 C++/CLI Wrapper for OgreSocks use for MOGRE
 
 ## Enviroment

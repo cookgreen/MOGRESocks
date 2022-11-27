@@ -20,7 +20,7 @@ namespace MogreSocks
 			return _nativePtr->Connect(saddr, port);
 		}
 
-		virtual void Send(array<System::Byte>^ data, String^ addr, unsigned long port)
+		virtual void Send(array<System::Byte>^ data, String^ addr, unsigned long port) override
 		{
 			std::list<char> cdata = Util::ConvertByteArrayToListChar(data);
 

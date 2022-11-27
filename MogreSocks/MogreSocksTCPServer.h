@@ -15,7 +15,12 @@ namespace MogreSocks
 		OgreSocksTCPServer* _nativePtr;
 
 	public:
-		MogreSocksTCPServer(){
+		MogreSocksTCPServer()
+		{
+
+		}
+		~MogreSocksTCPServer()
+		{
 
 		}
 
@@ -53,7 +58,7 @@ namespace MogreSocks
 			}
 		}
 
-		virtual void Send(array<Byte>^  data, String^ addr, unsigned long port)
+		virtual void Send(array<Byte>^  data, String^ addr, unsigned long port) override
 		{
 			std::list<char> cdata = Util::ConvertByteArrayToListChar(data);
 

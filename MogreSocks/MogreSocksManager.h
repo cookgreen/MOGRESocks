@@ -18,6 +18,9 @@ namespace MogreSocks
 		MogreSocksManager()
 		{
 		}
+		~MogreSocksManager()
+		{
+		}
 		!MogreSocksManager()
 		{
 		}

@@ -40,17 +40,13 @@ namespace MogreSocks
 			int sockaddrlen = sizeof(SOCKADDR);
 			getsockname(s, (SOCKADDR*)&sockaddr, &sockaddrlen);
 
-			char* optVal;
-
 			int sockType;
 			int sockTypelen = sizeof(int);
-			getsockopt(s, SOL_SOCKET, SO_TYPE, optVal, &sockTypelen);
-			sockType = (int)*optVal;
+			getsockopt(s, SOL_SOCKET, SO_TYPE, (char*)&sockType, &sockTypelen);
 
 			int sockPotoType;
 			int sockPotoTypelen = sizeof(int);
-			getsockopt(s, SOL_SOCKET, SO_PROTOCOL_INFO, optVal, &sockPotoTypelen);
-			sockPotoType = (int)*optVal;
+			getsockopt(s, SOL_SOCKET, SO_PROTOCOL_INFO, (char*)&sockPotoType, &sockPotoTypelen);
 
 			AddressFamily maddrFamily = (AddressFamily)sockaddr.sa_family;
 			SocketType socketType = (SocketType)sockType;

@@ -13,10 +13,6 @@ namespace MogreSocks
 	public ref class MogreSocksBase
 	{
 	public:
-		event ConnectEventHandler^ OnConnect;
-		event DisconnectEventHandler^ OnDisconnect;
-		event ReceiveEventHandler^ OnReceive;
-
 		virtual void Send(array<Byte>^ marr, String^ addr, unsigned long port)
 		{
 			std::list<char> cdata = Util::ConvertByteArrayToListChar(marr);
@@ -33,6 +29,17 @@ namespace MogreSocks
 			MogreSocksConnData^ mogreSocksConn  = gcnew MogreSocksConnData(&ogreSocksConn);
 			return mogreSocksConn; 
 		}
+
+		void SetReceiveListener(ReceiveListener^ listener)
+		{
+			_nativePtr->SetReceiveListener(listener->GetNativePtr());
+		}
+
+		OgreSocksBase* GetNativePtr()
+		{
+			return _nativePtr;
+		}
+
 	private:
 		OgreSocksBase* _nativePtr;
 	protected:

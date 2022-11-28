@@ -11,11 +11,25 @@ namespace MogreSocks
 {
 	public ref class MogreSocksTCP : MogreSocksBase
 	{
+	private:
+		OgreSocksTCP* _nativePtr;
+
 	public:
 		~MogreSocksTCP()
 		{
 
 		}
+
+		void SetConnectListener(ConnnectListener^ theCallback)
+		{
+			_nativePtr->SetConnectListener(theCallback->GetNativePtr());
+		}
+
+		void SetDisconnectListener(DisconnectListener^ theCallback)
+		{
+			_nativePtr->SetDisconnectListener(theCallback->GetNativePtr());
+		}
+
 	protected:
 		!MogreSocksTCP()
 		{

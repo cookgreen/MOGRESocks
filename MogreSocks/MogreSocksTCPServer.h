@@ -15,13 +15,9 @@ namespace MogreSocks
 		OgreSocksTCPServer* _nativePtr;
 
 	public:
-		MogreSocksTCPServer()
+		MogreSocksTCPServer(OgreSocksTCPServer* _nativePtr)
 		{
-
-		}
-		~MogreSocksTCPServer()
-		{
-
+			this->_nativePtr = _nativePtr;
 		}
 
 		property unsigned long NumConnections
@@ -79,11 +75,6 @@ namespace MogreSocks
 		OgreSocksTCPServer* GetNativePtr()
 		{
 			return _nativePtr;
-		}
-	protected:
-
-		!MogreSocksTCPServer()
-		{
 		}
 	};
 }

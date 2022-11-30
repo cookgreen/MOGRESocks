@@ -17,8 +17,7 @@ MogreSocksManager.Instance.Initialise();
 
 ### Create MogreSocks Object
 ```
-MogreSocksTCPClient msocket = null;
-MogreSocksManager.Instance.CreateSocket(ref msocket);
+MogreSocksTCPClient msocket = MogreSocksManager.Instance.CreateSocket();
 ```
 
 ### Event Process

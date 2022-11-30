@@ -11,6 +11,11 @@ namespace MogreSocks
 	private:
 		OgreSocksUDPPeer* _nativePtr;
 	public:
+		MogreSocksUDPPeer(OgreSocksUDPPeer* _nativePtr)
+		{
+			this->_nativePtr = _nativePtr;
+		}
+
 		property int MessageSize 
 		{ 
 			int get()

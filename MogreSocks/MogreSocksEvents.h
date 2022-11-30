@@ -10,18 +10,13 @@ using namespace System::Runtime::InteropServices;
 
 namespace MogreSocks
 {
-	delegate void ConnectEventHandler(String^, unsigned long, int);
-	delegate void DisconnectEventHandler(String^, unsigned long);
-	delegate void ReceiveEventHandler(array<Byte>^, String^, unsigned long);
-
-	typedef int (__stdcall *CONNCALLBACKMETHOD)(String^, unsigned long, int);
 	typedef int (__stdcall *DISCONNCALLBACKMETHOD)(String^, unsigned long);
+	typedef int (__stdcall *CONNCALLBACKMETHOD)(String^, unsigned long, int);
 	typedef int (__stdcall *RECVCALLBACKMETHOD)(array<Byte>^, String^, unsigned long);
 
 	public class DisconnectNativeListener
 	{
 	private:
-
 		DISCONNCALLBACKMETHOD cbm;
 
 	public:
@@ -48,17 +43,8 @@ namespace MogreSocks
 	};
 	public ref class DisconnectListener
 	{
-	private:
-		DisconnectEventHandler^ disconnectEventHandlerDelegate;
-
-		DisconnectNativeListener* _nativeListener;
-		DisconnectCallback<DisconnectNativeListener>* _callback;
-
-		void _OnDisconnect(String^ a, unsigned long b)
-		{
-			OnDisconnect(a, b);
-		}
 	public:
+		delegate void DisconnectEventHandler(String^, unsigned long);
 		event DisconnectEventHandler^ OnDisconnect;
 
 		DisconnectListener()
@@ -83,6 +69,16 @@ namespace MogreSocks
 		{
 			return _callback;
 		}
+	private:
+		DisconnectEventHandler^ disconnectEventHandlerDelegate;
+
+		DisconnectNativeListener* _nativeListener;
+		DisconnectCallback<DisconnectNativeListener>* _callback;
+
+		void _OnDisconnect(String^ a, unsigned long b)
+		{
+			OnDisconnect(a, b);
+		}
 	protected:
 		!DisconnectListener()
 		{
@@ -91,10 +87,10 @@ namespace MogreSocks
 		}
 	};
 
+	
 	public class ConnectNativeListener
 	{
 	private:
-
 		CONNCALLBACKMETHOD cbm;
 
 	public:
@@ -122,17 +118,8 @@ namespace MogreSocks
 
 	public ref class ConnnectListener
 	{
-	private:
-		ConnectEventHandler^ connectEvenHandlerDelegate;
-
-		ConnectNativeListener* _nativeListener;
-		ConnectCallback<ConnectNativeListener>* _callback;
-
-		void _OnConnect(String^ b, unsigned long c, int i)
-		{
-			OnConnect(b, c, i);
-		}
 	public:
+		delegate void ConnectEventHandler(String^, unsigned long, int);
 		event ConnectEventHandler^ OnConnect;
 
 		ConnnectListener()
@@ -157,6 +144,16 @@ namespace MogreSocks
 		{
 			return _callback;
 		}
+	private:
+		ConnectEventHandler^ connectEvenHandlerDelegate;
+
+		ConnectNativeListener* _nativeListener;
+		ConnectCallback<ConnectNativeListener>* _callback;
+
+		void _OnConnect(String^ b, unsigned long c, int i)
+		{
+			OnConnect(b, c, i);
+		}
 	protected:
 		!ConnnectListener()
 		{
@@ -168,7 +165,6 @@ namespace MogreSocks
 	public class ReceiveNativeListener
 	{
 	private:
-
 		RECVCALLBACKMETHOD cbm;
 
 	public:
@@ -197,17 +193,8 @@ namespace MogreSocks
 
 	public ref class ReceiveListener
 	{
-	private:
-		ReceiveEventHandler^ receiveEvenHandlerDelegate;
-
-		ReceiveNativeListener* _nativeListener;
-		ReceiveCallback<ReceiveNativeListener>* _callback;
-		
-		void _OnReceive(array<Byte>^ a, String^ b, unsigned long c)
-		{
-			OnReceive(a, b, c);
-		}
 	public:
+		delegate void ReceiveEventHandler(array<Byte>^, String^, unsigned long);
 		event ReceiveEventHandler^ OnReceive;
 
 		ReceiveListener()
@@ -231,6 +218,16 @@ namespace MogreSocks
 		ReceiveCallback<ReceiveNativeListener>* GetNativePtr()
 		{
 			return _callback;
+		}
+	private:
+		ReceiveEventHandler^ receiveEvenHandlerDelegate;
+
+		ReceiveNativeListener* _nativeListener;
+		ReceiveCallback<ReceiveNativeListener>* _callback;
+
+		void _OnReceive(array<Byte>^ a, String^ b, unsigned long c)
+		{
+			OnReceive(a, b, c);
 		}
 	protected:
 		!ReceiveListener()

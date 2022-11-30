@@ -13,6 +13,11 @@ namespace MogreSocks
 		OgreSocksTCPClient* _nativePtr;
 
 	public:
+		MogreSocksTCPClient(OgreSocksTCPClient* _nativePtr)
+		{
+			this->_nativePtr = _nativePtr;
+		}
+
 		int Connect(String^ addr, unsigned long port)
 		{
 			Ogre::String saddr;

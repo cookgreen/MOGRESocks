@@ -26,7 +26,7 @@ namespace MogreSocks
 		}
 
 	public:
-		property MogreSocksManager^ Instance
+		property static MogreSocksManager^ Instance
 		{
 			MogreSocksManager^ get()
 			{
@@ -41,60 +41,76 @@ namespace MogreSocks
 		
 		void CleanUp(){ OgreSocksManager::GetSingleton()->CleanUp(); }
 		
-		void CreateSocket(MogreSocksTCPClient^& sock)
+		MogreSocksTCPClient^ CreateSocket()
 		{
-			OgreSocksTCPClient* pSock = sock->GetNativePtr();
+			MogreSocksTCPClient^ msock;
+			OgreSocksTCPClient* pSock;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock);
+			msock = gcnew MogreSocksTCPClient(pSock);
+			return msock;
 		}
 
-		void CreateSocket(MogreSocksTCPServer^& sock, unsigned long port)
+		MogreSocksTCPServer^ CreateSocket(unsigned long port)
 		{
-			OgreSocksTCPServer* pSock = sock->GetNativePtr();
+			OgreSocksTCPServer* pSock;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, port);
+			MogreSocksTCPServer^ msocks = gcnew MogreSocksTCPServer(pSock);
+			return msocks;
 		}
 
-		void CreateSocket(MogreSocksTCPServer^& socks, String^ addr, unsigned long port)
+		MogreSocksTCPServer^ CreateSocket(String^ addr, unsigned long port)
 		{
 			Ogre::String saddr;
 			Util::ConvertManagedStrToOgreStr(saddr, addr);
 
-			OgreSocksTCPServer* pSocks = socks->GetNativePtr();
-
+			OgreSocksTCPServer* pSocks;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSocks, saddr, port);
+
+			MogreSocksTCPServer^ msocks = gcnew MogreSocksTCPServer(pSocks);
+			return msocks;
 		}
 
-		void CreateSocket(MogreSocksUDPPeer^& sock)
+		MogreSocksUDPPeer^ CreateUDPSocket()
 		{
-			OgreSocksUDPPeer* pSock = sock->GetNativePtr();
+			OgreSocksUDPPeer* pSock;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock);
+
+			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
+			return peerSocks;
 		}
 
-		void CreateSocket(MogreSocksUDPPeer^& sock, unsigned long port)
+		MogreSocksUDPPeer^ CreateUDPSocket(unsigned long port)
 		{
-			OgreSocksUDPPeer* pSock = sock->GetNativePtr();
+			OgreSocksUDPPeer* pSock;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, port);
+
+			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
+			return peerSocks;
 		}
-		void CreateSocket(MogreSocksUDPPeer^& sock, String^ addr, unsigned long port)
+		MogreSocksUDPPeer^ CreateUDPSocket(String^ addr, unsigned long port)
 		{
 			Ogre::String saddr;
 			Util::ConvertManagedStrToOgreStr(saddr, addr);
 
-			OgreSocksUDPPeer* pSock = sock->GetNativePtr();
+			OgreSocksUDPPeer* pSock;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, saddr, port);
+
+			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
+			return peerSocks;
 		}
-		void DeleteSocket(MogreSocksTCPClient^& sock)
+		void DeleteSocket(MogreSocksTCPClient^ sock)
 		{
 			OgreSocksTCPClient* pSock = sock->GetNativePtr();
 			OgreSocksManager::GetSingleton()->DeleteSocket(pSock);
 		}
 
-		void DeleteSocket(MogreSocksTCPServer^& sock)
+		void DeleteSocket(MogreSocksTCPServer^ sock)
 		{
 			OgreSocksTCPServer* pSock = sock->GetNativePtr();
 			OgreSocksManager::GetSingleton()->DeleteSocket(pSock);
 		}
 
-		void DeleteSocket(MogreSocksUDPPeer^& sock)
+		void DeleteSocket(MogreSocksUDPPeer^ sock)
 		{
 			OgreSocksUDPPeer* pSock = sock->GetNativePtr();
 			OgreSocksManager::GetSingleton()->DeleteSocket(pSock);

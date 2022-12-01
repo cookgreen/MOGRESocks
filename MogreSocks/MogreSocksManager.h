@@ -43,16 +43,15 @@ namespace MogreSocks
 		
 		MogreSocksTCPClient^ CreateSocket()
 		{
-			MogreSocksTCPClient^ msock;
-			OgreSocksTCPClient* pSock;
+			OgreSocksTCPClient* pSock = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock);
-			msock = gcnew MogreSocksTCPClient(pSock);
+			MogreSocksTCPClient^ msock = gcnew MogreSocksTCPClient(pSock);
 			return msock;
 		}
 
 		MogreSocksTCPServer^ CreateSocket(unsigned long port)
 		{
-			OgreSocksTCPServer* pSock;
+			OgreSocksTCPServer* pSock = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, port);
 			MogreSocksTCPServer^ msocks = gcnew MogreSocksTCPServer(pSock);
 			return msocks;
@@ -63,7 +62,7 @@ namespace MogreSocks
 			Ogre::String saddr;
 			Util::ConvertManagedStrToOgreStr(saddr, addr);
 
-			OgreSocksTCPServer* pSocks;
+			OgreSocksTCPServer* pSocks = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSocks, saddr, port);
 
 			MogreSocksTCPServer^ msocks = gcnew MogreSocksTCPServer(pSocks);
@@ -72,7 +71,7 @@ namespace MogreSocks
 
 		MogreSocksUDPPeer^ CreateUDPSocket()
 		{
-			OgreSocksUDPPeer* pSock;
+			OgreSocksUDPPeer* pSock = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock);
 
 			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
@@ -81,7 +80,7 @@ namespace MogreSocks
 
 		MogreSocksUDPPeer^ CreateUDPSocket(unsigned long port)
 		{
-			OgreSocksUDPPeer* pSock;
+			OgreSocksUDPPeer* pSock = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, port);
 
 			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
@@ -92,7 +91,7 @@ namespace MogreSocks
 			Ogre::String saddr;
 			Util::ConvertManagedStrToOgreStr(saddr, addr);
 
-			OgreSocksUDPPeer* pSock;
+			OgreSocksUDPPeer* pSock = NULL;
 			OgreSocksManager::GetSingleton()->CreateSocket(pSock, saddr, port);
 
 			MogreSocksUDPPeer^ peerSocks = gcnew MogreSocksUDPPeer(pSock);
